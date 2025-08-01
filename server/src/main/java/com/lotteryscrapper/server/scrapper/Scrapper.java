@@ -14,7 +14,7 @@ public class Scrapper implements CommandLineRunner {
         System.out.println("Fetching results from: " + url);
         try {
             Document doc = Jsoup.connect(url).get();
-            Elements results = doc.select(".lottery-result span"); // Adjust this selector based on site
+            Elements results = doc.select("ul.res li.lbox:nth-of-type(2) ol.B > li"); // Adjust this selector based on site
             System.out.println("Jayoda Lottery Results:");
             results.forEach(e -> System.out.println("→ " + e.text()));
         } catch (Exception e) {
